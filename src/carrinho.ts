@@ -14,19 +14,18 @@ export function adicionarAoCarrinho(
     return false;
   }
 
-  const itemExistente = carrinho.find(
-    (item) => item.produtoId === produtoId
-  );
+  for (const item of carrinho) {
+    if (item.produtoId === produtoId) {
+      if (item.quantidade + quantidade > produto.estoque) {
+        return false;
+      }
 
-  if (itemExistente) {
-    if (itemExistente.quantidade + quantidade > produto.estoque) {
-      return false;
+      item.quantidade = item.quantidade + quantidade;
+      return true;
     }
-
-    itemExistente.quantidade += quantidade;
-  } else {
-    carrinho.push({ produtoId, quantidade });
   }
+
+  carrinho.push({ produtoId: produtoId, quantidade: quantidade });
 
   return true;
 }
@@ -36,9 +35,15 @@ export function listarCarrinho(): itemCarrinho[] {
 }
 
 export function calcularTotalCarrinho(): number {
-  return carrinho.reduce((total, item) => {
+  let total = 0;
+
+  for (const item of carrinho) {
     const produto = buscarProdutoPorId(item.produtoId);
 
-    return total + (produto ? produto.preco * item.quantidade : 0);
-  }, 0);
+    if (produto) {
+      total = total + produto.preco * item.quantidade;
+    }
+  }
+
+  return total;
 }
