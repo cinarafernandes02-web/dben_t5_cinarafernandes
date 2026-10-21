@@ -19,6 +19,7 @@ import {
   adicionarAoCarrinho,
   listarCarrinho,
   calcularTotalCarrinho,
+  removerDoCarrinho,
 } from "./carrinho.js";
 
 import { registrarPedido, listarPedidos } from "./pedidos.js";
@@ -138,9 +139,16 @@ console.log(listarClientes());
 console.log("QUANTIDADE DE CLIENTES APÓS EXCLUSÃO:");
 console.log(listarClientes().length);
 
+
 const adicionado = adicionarAoCarrinho(1, 2);
 
 console.log("ITEM ADICIONADO AO CARRINHO:", adicionado);
+
+const adicionadoCaneta = adicionarAoCarrinho(2, 1);
+console.log("SEGUNDO ITEM ADICIONADO:", adicionadoCaneta);
+
+console.log("REMOÇÃO DA CANETA:", removerDoCarrinho(2));
+
 console.log("CARRINHO:");
 console.log(listarCarrinho());
 

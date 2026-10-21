@@ -1,3 +1,8 @@
+//findIndex() localiza o item do carrinho pelo ID do produto. - CINARA
+//indice === -1 significa que o item não foi encontrado. - CINARA
+//splice(indice, 1) remove o item inteiro do carrinho. - CINARA
+
+
 
 import type { itemCarrinho } from "./types.js";
 import { buscarProdutoPorId } from "./produtos.js";
@@ -46,4 +51,19 @@ export function calcularTotalCarrinho(): number {
   }
 
   return total;
+}
+
+
+export function removerDoCarrinho(produtoId: number): boolean {
+  const indice = carrinho.findIndex(
+    (item) => item.produtoId === produtoId
+  );
+
+  if (indice === -1) {
+    return false;
+  }
+
+  carrinho.splice(indice, 1);
+
+  return true;
 }

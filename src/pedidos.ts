@@ -1,11 +1,13 @@
+//some() verifica se existe algum pedido com aquele ID, se já estiver sendo utilizado o 
+// registrarPedido() não cria outro pedido e retorna undefined. - CINARA
+
 
 import type { pedido } from "./types.js";
 import { buscarClientePorId } from "./clientes.js";
 import {
   listarCarrinho,
   calcularTotalCarrinho,
-} 
-from "./carrinho.js";
+} from "./carrinho.js";
 
 const pedidos: pedido[] = [];
 
@@ -17,6 +19,14 @@ export function registrarPedido(
   const itensCarrinho = listarCarrinho();
 
   if (!cliente || itensCarrinho.length === 0) {
+    return undefined;
+  }
+
+  const idExistente = pedidos.some(
+    (item) => item.id === id
+  );
+
+  if (idExistente) {
     return undefined;
   }
 
