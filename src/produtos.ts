@@ -11,3 +11,6 @@ export function listarProdutos(): produto[] {
   return produtos;
 }
 
+export function buscarProdutoPorId(id: number): produto | undefined {
+  return produtos.find((item) => item.id === id);
+}
