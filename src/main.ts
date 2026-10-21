@@ -7,7 +7,13 @@ import {
   excluirProduto,
 } from "./produtos.js";
 
-import { cadastrarCliente, listarClientes } from "./clientes.js";
+import {
+  cadastrarCliente,
+  listarClientes,
+  buscarClientePorId,
+  atualizarCliente,
+  excluirCliente,
+} from "./clientes.js";
 
 import {
   adicionarAoCarrinho,
@@ -63,6 +69,18 @@ cadastrarCliente({
   email: "maria@email.com",
 });
 
+cadastrarCliente({
+  id: 2,
+  nome: "João Santos",
+  email: "joao@email.com",
+});
+
+cadastrarCliente({
+  id: 3,
+  nome: "Hilda Mia Maria",
+  email: "miadamamae@email.com",
+})
+
 console.log("PRODUTOS:");
 console.log(listarProdutos());
 
@@ -95,6 +113,30 @@ console.log(
 
 console.log("CLIENTES:");
 console.log(listarClientes());
+
+console.log("QUANTIDADE DE CLIENTES:");
+console.log(listarClientes().length);
+
+console.log("ATUALIZAÇÃO DO CLIENTE:");
+console.log(
+  atualizarCliente(2, {
+    id: 2,
+    nome: "João Santos",
+    email: "joao.santos@email.com",
+  })
+);
+
+console.log("CLIENTE ATUALIZADO:");
+console.log(buscarClientePorId(2));
+
+console.log("EXCLUSÃO DO CLIENTE 3:");
+console.log(excluirCliente(3));
+
+console.log("CLIENTES APÓS EXCLUSÃO:");
+console.log(listarClientes());
+
+console.log("QUANTIDADE DE CLIENTES APÓS EXCLUSÃO:");
+console.log(listarClientes().length);
 
 const adicionado = adicionarAoCarrinho(1, 2);
 
