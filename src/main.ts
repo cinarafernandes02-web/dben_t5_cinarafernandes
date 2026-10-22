@@ -22,7 +22,11 @@ import {
   removerDoCarrinho,
 } from "./carrinho.js";
 
-import { registrarPedido, listarPedidos } from "./pedidos.js";
+import {
+  registrarPedido,
+  listarPedidos,
+  buscarPedidosPorCliente,
+} from "./pedidos.js";
 
 cadastrarProduto({
   id: 1,
@@ -160,5 +164,17 @@ const pedidoCriado = registrarPedido(1, 1);
 console.log("PEDIDO CRIADO:");
 console.log(pedidoCriado);
 
+console.log("TENTATIVA DE PEDIDO PARA CLIENTE INEXISTENTE:", registrarPedido(2, 999));
+
+console.log("TENTATIVA DE REPETIR ID DO PEDIDO:", registrarPedido(1, 1));
+
+console.log("ESTOQUE APÓS A COMPRA:", buscarProdutoPorId(1)?.estoque);
+console.log("CARRINHO APÓS A COMPRA:", listarCarrinho());
+
 console.log("LISTA DE PEDIDOS:");
 console.log(listarPedidos());
+
+console.log(
+  "PEDIDOS DO CLIENTE 1:",
+  buscarPedidosPorCliente(1)
+);

@@ -18,10 +18,17 @@ export type itemCarrinho = {
   quantidade: number;
 };
 
+export type itemPedido = {
+  produtoId: number;
+  quantidade: number;
+  precoUnitario: number;
+  subtotal: number;
+};
+
 export type pedido = {
   id: number;
   clienteId: number;
-  itens: itemCarrinho[];
+  itens: itemPedido[];
   total: number;
   data: string;
 };

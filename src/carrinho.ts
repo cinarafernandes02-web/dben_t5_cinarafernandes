@@ -15,9 +15,14 @@ export function adicionarAoCarrinho(
 ): boolean {
   const produto = buscarProdutoPorId(produtoId);
 
-  if (!produto || quantidade <= 0 || quantidade > produto.estoque) {
-    return false;
-  }
+  if (
+  !produto ||
+  !Number.isInteger(quantidade) ||
+  quantidade <= 0 ||
+  quantidade > produto.estoque
+) {
+  return false;
+}
 
   for (const item of carrinho) {
     if (item.produtoId === produtoId) {
@@ -53,6 +58,28 @@ export function calcularTotalCarrinho(): number {
   return total;
 }
 
+export function alterarQuantidade(
+  produtoId: number,
+  novaQuantidade: number
+): boolean {
+  const item = carrinho.find(
+    (item) => item.produtoId === produtoId
+  );
+  const produto = buscarProdutoPorId(produtoId);
+
+  if (
+    !item ||
+    !produto ||
+    !Number.isInteger(novaQuantidade) ||
+    novaQuantidade <= 0 ||
+    novaQuantidade > produto.estoque
+  ) {
+    return false;
+  }
+
+  item.quantidade = novaQuantidade;
+  return true;
+}
 
 export function removerDoCarrinho(produtoId: number): boolean {
   const indice = carrinho.findIndex(

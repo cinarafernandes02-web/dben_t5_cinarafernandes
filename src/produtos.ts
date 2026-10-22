@@ -4,7 +4,8 @@
 //indice === -1 significa que o produto não foi encontrado na lista. - CINARA
 //Inclui cód. para que o ID não possa ser reutilizado. - CINARA
 //trim() remove os espaços das extremidades do texto, 
-// assim não é possível incluir um nome apenas com espaços. - CINARA
+// assim não é possível incluir um nome apenas com espaços. - 
+//splice - remove o produto da lista. - CINARA
 
 import type { produto } from "./types.js";
 
@@ -16,13 +17,15 @@ const idsUtilizados = new Set<number>();
 
 export function cadastrarProduto(novoProduto: produto): boolean {
   if (
-    idsUtilizados.has(novoProduto.id) ||
-    novoProduto.nome.trim() === "" ||
-    novoProduto.preco <= 0 ||
-    novoProduto.estoque < 0
-  ) {
-    return false;
-  }
+  !Number.isInteger(novoProduto.id) ||
+  novoProduto.id <= 0 ||
+  idsUtilizados.has(novoProduto.id) ||
+  novoProduto.nome.trim() === "" ||
+  novoProduto.preco <= 0 ||
+  novoProduto.estoque < 0
+) {
+  return false;
+}
 
   produtos.push(novoProduto);
   idsUtilizados.add(novoProduto.id);
@@ -73,15 +76,33 @@ export function atualizarProduto(
   return false;
 }
 
-  if (novosDados.id !== id) {
-    const idExistente = buscarProdutoPorId(novosDados.id);
-
-    if (idExistente) {
-      return false;
-    }
-  }
+  if (
+  novosDados.id !== id &&
+  idsUtilizados.has(novosDados.id)
+) {
+  return false;
+}
 
   produtos[indice] = novosDados;
+  return true;
+}
+
+export function reduzirEstoque(
+  id: number,
+  quantidade: number
+): boolean {
+  const produto = buscarProdutoPorId(id);
+
+  if (
+    !produto ||
+    !Number.isInteger(quantidade) ||
+    quantidade <= 0 ||
+    quantidade > produto.estoque
+  ) {
+    return false;
+  }
+
+  produto.estoque -= quantidade;
   return true;
 }
 
@@ -91,8 +112,6 @@ export function excluirProduto(id: number): boolean {
   if (indice === -1) {
     return false;
   }
-
-//splice - remove o produto da lista. - CINARA
 
   produtos.splice(indice, 1);
   return true;
