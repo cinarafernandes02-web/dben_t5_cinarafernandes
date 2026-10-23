@@ -197,6 +197,41 @@ const pedidoCriado = registrarPedido(1, 1);
 console.log("PEDIDO CRIADO:");
 console.log(pedidoCriado);
 
+
+console.log("TESTE: PRESERVAÇÃO DO PREÇO DO PEDIDO:");
+
+console.log(
+  "PREÇO REGISTRADO NO PEDIDO:",
+  pedidoCriado?.itens[0]?.precoUnitario
+);
+
+console.log(
+  "SUBTOTAL REGISTRADO NO PEDIDO:",
+  pedidoCriado?.itens[0]?.subtotal
+);
+
+console.log(
+  "ALTERAÇÃO DO PREÇO NO CATÁLOGO:",
+  atualizarProduto(1, {
+    id: 1,
+    nome: "Caderno universitário",
+    categoria: "Papelaria",
+    preco: 25,
+    estoque: buscarProdutoPorId(1)?.estoque ?? 0,
+  })
+);
+
+console.log(
+  "PREÇO ATUAL NO CATÁLOGO:",
+  buscarProdutoPorId(1)?.preco
+);
+
+console.log(
+  "PREÇO MANTIDO NO PEDIDO:",
+  pedidoCriado?.itens[0]?.precoUnitario
+);
+
+
 console.log("TENTATIVA DE PEDIDO PARA CLIENTE INEXISTENTE:", registrarPedido(2, 999));
 
 console.log("TENTATIVA DE REPETIR ID DO PEDIDO:", registrarPedido(1, 1));
