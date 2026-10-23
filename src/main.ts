@@ -99,6 +99,18 @@ cadastrarCliente({
   email: "miadamamae@email.com",
 })
 
+
+console.log("TESTE: CADASTRO DE CLIENTE COM E-MAIL INVÁLIDO:");
+
+console.log(
+  cadastrarCliente({
+    id: 4,
+    nome: "Cliente Teste",
+    email: "email-invalido",
+  })
+);
+
+
 console.log("PRODUTOS:");
 console.log(listarProdutos());
 
