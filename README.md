@@ -1,4 +1,6 @@
 # Papelaria Criativa
+**Estudante:** Cinara Fernandes Skieresz
+**Turma:** Desenvolvedor Back-End Node — T5
 
 ## 1. Sobre o projeto
 
@@ -45,6 +47,32 @@ Nesta etapa, trabalhei nas funcionalidades de gerenciamento de produtos e client
 - Limpar o carrinho após o registro do pedido.
 - Listar os pedidos e consultar os pedidos de um cliente.
 - Validar pedidos inválidos e impedir IDs de pedidos duplicados.
+
+## Exemplos das principais operações
+
+A aplicação demonstra suas operações e seus resultados no terminal. Alguns exemplos de funcionamento são:
+
+**Cadastro e gerenciamento de produtos**
+- Listagem dos produtos cadastrados.
+- Atualização do preço de um produto.
+- Exclusão de um produto e verificação da quantidade restante no catálogo.
+
+**Gerenciamento de clientes**
+- Listagem dos clientes cadastrados.
+- Atualização dos dados de um cliente.
+- Validação de e-mails inválidos.
+
+**Carrinho de compras**
+- Adição de produtos ao carrinho.
+- Cálculo do valor total da compra.
+- Recusa de quantidades superiores ao estoque disponível.
+
+**Registro de pedidos**
+- Registro de um pedido associado a um cliente cadastrado.
+- Cálculo do valor total e armazenamento dos preços praticados na compra.
+- Atualização do estoque após a finalização do pedido.
+
+**Exemplo de cálculo:** ao adicionar 2 cadernos com preço unitário de R$ 20,00, o total da compra é de R$ 40,00. Após o registro do pedido, o estoque do produto é reduzido de 15 para 13 unidades.
 
 ## 3. Tecnologias utilizadas
 
@@ -176,7 +204,23 @@ O comando utiliza o script configurado no `package.json` para executar a aplica�
 
 As demonstrações das operações e os resultados dos testes são exibidos no terminal.
 
-## 8. Considerações finais
+## 8. Limitações conhecidas do sistema
+
+Esta versão do Papelaria Criativa tem como objetivo praticar a lógica de uma aplicação back-end, não sendo um sistema comercial completo.
+
+As principais limitações são:
+
+- Não possui interface gráfica ou páginas web; as operações e os resultados são demonstrados no terminal.
+- Não utiliza banco de dados. Os dados são mantidos durante a execução da aplicação e não são persistidos para utilização após seu encerramento.
+- Não possui integração com meios de pagamento.
+- Não implementa autenticação de usuários.
+- O arquivo `relatorios.ts` está presente na estrutura do projeto, mas não possui funcionalidades implementadas nesta versão.
+
+Essas limitações fazem parte do escopo atual do projeto e podem ser consideradas em futuras melhorias.
+
+
+
+## 9. Considerações finais
 
 Desenvolver o Papelaria Criativa foi uma oportunidade de colocar em prática os conteúdos estudados e aprender coisas novas durante o processo.
 
