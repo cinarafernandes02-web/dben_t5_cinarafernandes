@@ -173,6 +173,14 @@ const adicionado = adicionarAoCarrinho(1, 2);
 
 console.log("ITEM ADICIONADO AO CARRINHO:", adicionado);
 
+
+console.log("TESTE: QUANTIDADE MAIOR QUE O ESTOQUE:");
+
+console.log("ESTOQUE DISPONÍVEL:", buscarProdutoPorId(1)?.estoque);
+
+console.log("TENTATIVA DE ADICIONAR 16 CADERNOS:",adicionarAoCarrinho(1, 16));
+
+
 const adicionadoCaneta = adicionarAoCarrinho(2, 1);
 console.log("SEGUNDO ITEM ADICIONADO:", adicionadoCaneta);
 
