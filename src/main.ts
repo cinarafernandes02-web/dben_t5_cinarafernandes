@@ -68,6 +68,19 @@ console.log("PRODUTO ATUALIZADO:");
 console.log(buscarProdutoPorId(1));
 
 
+console.log("TESTE: CADASTRO DE PRODUTO COM PREÇO ZERO:");
+
+console.log(
+  cadastrarProduto({
+    id: 4,
+    nome: "Produto inválido",
+    categoria: "Teste",
+    preco: 0,
+    estoque: 10,
+  })
+);
+
+
 cadastrarCliente({
   id: 1,
   nome: "Maria Silva",
@@ -174,7 +187,4 @@ console.log("CARRINHO APÓS A COMPRA:", listarCarrinho());
 console.log("LISTA DE PEDIDOS:");
 console.log(listarPedidos());
 
-console.log(
-  "PEDIDOS DO CLIENTE 1:",
-  buscarPedidosPorCliente(1)
-);
+console.log("PEDIDOS DO CLIENTE 1:", buscarPedidosPorCliente(1));
